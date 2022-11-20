@@ -13,6 +13,17 @@ public class CaNhan205 {
 	private String ghiChu;
 	private String loai;
 
+    public CaNhan205(int id, String soCCCD, LocalDate ngaySinh, String hoTen, String diaChi, String email, String ghiChu, String loai) {
+        this.id = id;
+        this.soCCCD = soCCCD;
+        this.ngaySinh = ngaySinh;
+        this.hoTen = hoTen;
+        this.diaChi = diaChi;
+        this.email = email;
+        this.ghiChu = ghiChu;
+        this.loai = loai;
+    }
+
     public int getId() {
         return id;
     }

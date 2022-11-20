@@ -1,13 +1,23 @@
 package model;
 
+import java.time.LocalDate;
 import java.util.List;
 
-public class HopDong205  extends CaNhan205{
+public class HopDong205 {
 
 	private int id;
 	private String loai;
 	private List<XeHopDong205> dsXeHD;
 	private List<XeHopDong205> listXeHD;
+
+    public HopDong205(int id, String loai, List<XeHopDong205> dsXeHD, List<XeHopDong205> listXeHD) {
+        this.id = id;
+        this.loai = loai;
+        this.dsXeHD = dsXeHD;
+        this.listXeHD = listXeHD;
+    }
+
+   
 
     public int getId() {
         return id;

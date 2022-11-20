@@ -9,6 +9,16 @@ public class Xe205 {
 	private String moTa;
 	private DoiTac205 doiTac;
 
+    public Xe205(int id, String bienSo, String dongXe, String hangXe, String doiXe, String moTa, DoiTac205 doiTac) {
+        this.id = id;
+        this.bienSo = bienSo;
+        this.dongXe = dongXe;
+        this.hangXe = hangXe;
+        this.doiXe = doiXe;
+        this.moTa = moTa;
+        this.doiTac = doiTac;
+    }
+
     public int getId() {
         return id;
     }
