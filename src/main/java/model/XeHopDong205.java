@@ -12,6 +12,15 @@ public class XeHopDong205 {
 	private String tinhTrang;
 	private Xe205 xe;
 
+    public XeHopDong205(int id, LocalDate ngayBatDau, LocalDate ngayKetThuc, double donGia, String tinhTrang, Xe205 xe) {
+        this.id = id;
+        this.ngayBatDau = ngayBatDau;
+        this.ngayKetThuc = ngayKetThuc;
+        this.donGia = donGia;
+        this.tinhTrang = tinhTrang;
+        this.xe = xe;
+    }
+
     public int getId() {
         return id;
     }
