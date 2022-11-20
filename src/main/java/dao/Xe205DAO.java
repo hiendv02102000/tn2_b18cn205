@@ -9,5 +9,9 @@ package dao;
  * @author Admin
  */
 public class Xe205DAO extends DAO{
+
+    public Xe205DAO() { 
+        super();
+    }
     
 }

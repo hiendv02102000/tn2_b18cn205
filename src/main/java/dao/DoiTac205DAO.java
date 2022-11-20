@@ -9,5 +9,8 @@ package dao;
  * @author Admin
  */
 public class DoiTac205DAO extends DAO{
-    
+
+    public DoiTac205DAO() { 
+        super();
+    }
 }

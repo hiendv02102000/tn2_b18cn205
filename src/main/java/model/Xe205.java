@@ -8,4 +8,61 @@ public class Xe205 {
 	private String doiXe;
 	private String moTa;
 	private DoiTac205 doiTac;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getBienSo() {
+        return bienSo;
+    }
+
+    public void setBienSo(String bienSo) {
+        this.bienSo = bienSo;
+    }
+
+    public String getDongXe() {
+        return dongXe;
+    }
+
+    public void setDongXe(String dongXe) {
+        this.dongXe = dongXe;
+    }
+
+    public String getHangXe() {
+        return hangXe;
+    }
+
+    public void setHangXe(String hangXe) {
+        this.hangXe = hangXe;
+    }
+
+    public String getDoiXe() {
+        return doiXe;
+    }
+
+    public void setDoiXe(String doiXe) {
+        this.doiXe = doiXe;
+    }
+
+    public String getMoTa() {
+        return moTa;
+    }
+
+    public void setMoTa(String moTa) {
+        this.moTa = moTa;
+    }
+
+    public DoiTac205 getDoiTac() {
+        return doiTac;
+    }
+
+    public void setDoiTac(DoiTac205 doiTac) {
+        this.doiTac = doiTac;
+    }
+        
 }

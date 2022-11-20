@@ -9,5 +9,9 @@ package dao;
  * @author Admin
  */
 public class HongDongKiGuiXe205DAO extends DAO{
+
+    public HongDongKiGuiXe205DAO() {
+        super();
+    }
     
 }
