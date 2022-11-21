@@ -1,0 +1,4 @@
+CREATE DEFINER=`root`@`localhost` TRIGGER `tblcanhan205_BEFORE_INSERT` BEFORE INSERT ON `tblcanhan205` FOR EACH ROW BEGIN
+		SIGNAL SQLSTATE  '45000'
+      SET MESSAGE_TEXT = 'An error occurredccccc';
+END
