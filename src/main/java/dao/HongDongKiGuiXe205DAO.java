@@ -65,16 +65,16 @@ public class HongDongKiGuiXe205DAO extends DAO {
             if (rowCount < hd.getListXeHD().size()) {
                 throw new Exception("Thêm Xe hợp đồng vào DB lỗi");
             }
-             this.conn.setAutoCommit(true);
+            this.conn.setAutoCommit(true);
         } catch (Exception e) {
             e.printStackTrace();
             try {
                 this.conn.rollback();
-                 this.conn.setAutoCommit(true);
+                this.conn.setAutoCommit(true);
             } catch (SQLException ex) {
                 e.printStackTrace();
             }
-            
+
             return false;
         }
         return true;
