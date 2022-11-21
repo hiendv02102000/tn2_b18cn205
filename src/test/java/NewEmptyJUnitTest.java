@@ -39,7 +39,9 @@ public class NewEmptyJUnitTest {
     // The methods must be annotated with annotation @Test. For example:
     //
      @Test
-     public void hello() {}
+     public void hello() {
+         
+     }
       @Test
      public void hello2() {}
 }
