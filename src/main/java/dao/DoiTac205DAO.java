@@ -23,19 +23,19 @@ public class DoiTac205DAO extends DAO {
     }
 
     public List<DoiTac205> getDSDoiTacTheoKieuXe(Xe205 xe) {
-        final String  sql = "SELECT * from tblcanhan205 dt \n"
+        final String sql = "SELECT * from tblcanhan205 dt \n"
                 + "INNER JOIN (\n"
                 + "SELECT tblCaNhan205id as dt_id from tblxe205 \n"
-                + "WHERE dongXe LIKE '%?%' AND hangXe LIKE '%?%' AND doiXe LIKE '%?%'\n"
+                + "WHERE dongXe LIKE ? AND hangXe LIKE ? AND doiXe LIKE ?\n"
                 + ") as xe_tk \n"
                 + "ON dt.id = xe_tk.dt_id\n"
                 + "group by dt.id";
         List<DoiTac205> listDT = new ArrayList<>();
         try {
             PreparedStatement prepareStatement = this.conn.prepareStatement(sql);
-            prepareStatement.setString(1, xe.getDongXe());
-            prepareStatement.setString(2, xe.getHangXe());
-            prepareStatement.setString(3, xe.getDoiXe());
+            prepareStatement.setString(1, '%' + xe.getDongXe() + '%');
+            prepareStatement.setString(2, '%' + xe.getHangXe() + '%');
+            prepareStatement.setString(3, '%' + xe.getDoiXe() + '%');
             ResultSet rs = prepareStatement.executeQuery();
             while (rs.next()) {
                 DoiTac205 dt = new DoiTac205(rs.getInt("id"),
@@ -54,5 +54,10 @@ public class DoiTac205DAO extends DAO {
             return null;
         }
         return listDT;
+    }
+
+    public static void main(String[] args) {
+        DoiTac205DAO dao = new DoiTac205DAO();
+        System.out.println( dao.getDSDoiTacTheoKieuXe(new Xe205(0, "", "", "", "", "", null)).size());;
     }
 }

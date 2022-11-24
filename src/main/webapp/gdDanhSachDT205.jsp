@@ -4,10 +4,23 @@
     Author     : Admin
 --%>
 
+<%@page import="java.util.List"%>
+<%@page import="model.*"%>
+<%@page import="dao.DoiTac205DAO"%>
+<%@page import="java.time.LocalDate"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-
+    <%
+        QuanLy205 ql = (QuanLy205) session.getAttribute("quanLy");
+        if (ql == null) {
+            response.sendRedirect("gdQuanLy205.jsp");
+        }
+        DoiTac205DAO dao = new DoiTac205DAO();
+        Xe205 xe = new Xe205(0, "", request.getParameter("hang_xe"), request.getParameter("dong_xe"), request.getParameter("doi_xe"), "", null);
+        List<DoiTac205> dsDT = dao.getDSDoiTacTheoKieuXe(xe);
+        System.out.println("");
+    %>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
