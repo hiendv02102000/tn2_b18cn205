@@ -12,7 +12,7 @@
     <%
         QuanLy205 ql = (QuanLy205) session.getAttribute("quanLy");
         if (ql == null) {
-            ql = new QuanLy205("admin", "123456", 1, "001200014413", LocalDate.of(2000, 02, 02), "Trần Thị Lý", "chân trời", "admin@hien.com", "");
+            ql = new QuanLy205("admin", "123456", 1, "001200014413", LocalDate.of(2000, 02, 02), "Trần Thị Lý", "chân trời", "admin@hien.com", "","");
             session.setAttribute("quanLy", ql);
         }
     %>

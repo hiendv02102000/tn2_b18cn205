@@ -12,8 +12,8 @@ public class CaNhan205 {
 	private String email;
 	private String ghiChu;
 	private String loai;
-
-    public CaNhan205(int id, String soCCCD, LocalDate ngaySinh, String hoTen, String diaChi, String email, String ghiChu, String loai) {
+        private String sdt;
+    public CaNhan205(int id, String soCCCD, LocalDate ngaySinh, String hoTen, String diaChi, String email, String ghiChu, String loai, String sdt) {
         this.id = id;
         this.soCCCD = soCCCD;
         this.ngaySinh = ngaySinh;
@@ -22,6 +22,15 @@ public class CaNhan205 {
         this.email = email;
         this.ghiChu = ghiChu;
         this.loai = loai;
+        this.sdt = sdt;
+    }
+
+    public String getSdt() {
+        return sdt;
+    }
+
+    public void setSdt(String sdt) {
+        this.sdt = sdt;
     }
 
     public int getId() {

@@ -14,12 +14,12 @@
     <%
         QuanLy205 ql = (QuanLy205) session.getAttribute("quanLy");
         if (ql == null) {
-            response.sendRedirect("gdQuanLy205.jsp");
+            response.sendRedirect("./gdQuanLy205.jsp");
         }
         DoiTac205DAO dao = new DoiTac205DAO();
         Xe205 xe = new Xe205(0, "", request.getParameter("hang_xe"), request.getParameter("dong_xe"), request.getParameter("doi_xe"), "", null);
         List<DoiTac205> dsDT = dao.getDSDoiTacTheoKieuXe(xe);
-        System.out.println("");
+
     %>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -48,27 +48,34 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <%                            for (DoiTac205 dt : dsDT) {
+                        %>
                         <tr>
-                            <td>001200014478</td>
-                            <td>Lò Văn Dự</td>
-                            <td>0912345678</td>
-                            <td>Dễ tính :></td>
-                            <td class="select-item" onclick="location.href = './gdDanhsachXeDT.html'"></a>Chọn</td>
+                            <td><%=dt.getSoCCCD()%></td>
+                            <td><%=dt.getHoTen()%></td>
+                            <td><%=dt.getSdt()%></td>
+                            <td><%=dt.getGhiChu()%>></td>
+                            <td class="select-item" onclick=<%="\"location.href = './gdDanhsachXe.jsp?dt_id =" + dt.getId() + "'\""%>></a>Chọn</td>
                         </tr>
-                        <tr>
-                            <td>001200014478</td>
-                            <td>Lò Văn Dự</td>
-                            <td>0912345678</td>
-                            <td>Dễ tính :></td>
-                            <td class="select-item" onclick="location.href = './gdDanhsachXeDT.html'"></a>Chọn</td>
-                        </tr>
-                        <tr>
-                            <td>001200014478</td>
-                            <td>Lò Văn Dự</td>
-                            <td>0912345678</td>
-                            <td>Dễ tính :></td>
-                            <td class="select-item" onclick="location.href = './gdDanhsachXeDT.html'"></a>Chọn</td>
-                        </tr>
+
+                        <%
+                            }
+                        %>
+
+                        <!--                        <tr>
+                                                    <td>001200014478</td>
+                                                    <td>Lò Văn Dự</td>
+                                                    <td>0912345678</td>
+                                                    <td>Dễ tính :></td>
+                                                    <td class="select-item" onclick="location.href = './gdDanhsachXeDT.html'"></a>Chọn</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>001200014478</td>
+                                                    <td>Lò Văn Dự</td>
+                                                    <td>0912345678</td>
+                                                    <td>Dễ tính :></td>
+                                                    <td class="select-item" onclick="location.href = './gdDanhsachXeDT.html'"></a>Chọn</td>
+                                                </tr>-->
                     </tbody>
                 </table>
             </div>

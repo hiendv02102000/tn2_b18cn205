@@ -6,8 +6,6 @@ package dao;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Statement;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import model.*;
@@ -44,7 +42,8 @@ public class DoiTac205DAO extends DAO {
                         rs.getNString("hoTen"),
                         rs.getNString("diaChi"),
                         rs.getString("email"),
-                        rs.getNString("ghiChu")
+                        rs.getNString("ghiChu"),
+                        rs.getString("sdt")
                 );
                 listDT.add(dt);
             }
@@ -56,8 +55,31 @@ public class DoiTac205DAO extends DAO {
         return listDT;
     }
 
-    public static void main(String[] args) {
-        DoiTac205DAO dao = new DoiTac205DAO();
-        System.out.println( dao.getDSDoiTacTheoKieuXe(new Xe205(0, "", "", "", "", "", null)).size());;
+    public DoiTac205 getDoiTacByID(int id){
+         final String sql = "SELECT * from tblcanhan205 dt \n"
+               
+                + "WHERE id = ?";
+        DoiTac205 dt = null;
+        try {
+            PreparedStatement prepareStatement = this.conn.prepareStatement(sql);
+            prepareStatement.setInt(1, id);
+         
+            ResultSet rs = prepareStatement.executeQuery();
+            if (rs.next()) {
+                 dt = new DoiTac205(rs.getInt("id"),
+                        rs.getString("cccd"),
+                        rs.getDate("ngaySinh").toLocalDate(),
+                        rs.getNString("hoTen"),
+                        rs.getNString("diaChi"),
+                        rs.getString("email"),
+                        rs.getNString("ghiChu"),
+                        rs.getString("sdt")
+                );
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return dt;
     }
 }

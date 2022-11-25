@@ -13,7 +13,7 @@
     <%
         QuanLy205 ql = (QuanLy205) session.getAttribute("quanLy");
         if (ql == null) {
-            response.sendRedirect("gdQuanLy205.jsp");
+            response.sendRedirect("./gdQuanLy205.jsp");
         }
     %>
     <head>
