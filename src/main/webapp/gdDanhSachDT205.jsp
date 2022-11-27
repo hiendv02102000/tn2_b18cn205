@@ -24,7 +24,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-        <title>Danh sách đối tác</title>
+        <title>Danh sách đối tác </title>
         <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
               integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -55,7 +55,7 @@
                             <td><%=dt.getHoTen()%></td>
                             <td><%=dt.getSdt()%></td>
                             <td><%=dt.getGhiChu()%>></td>
-                            <td class="select-item" onclick=<%="\"location.href = './gdDanhsachXe.jsp?dt_id =" + dt.getId() + "'\""%>></a>Chọn</td>
+                            <td class="select-item" onclick=<%="\"location.href = './gdDanhSachXe205.jsp?dt_id=" + dt.getId() + "'\""%>></a>Chọn</td>
                         </tr>
 
                         <%

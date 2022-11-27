@@ -67,7 +67,7 @@
     <body>
         <div class="content">
             <nav class="navbar navbar-light navbar-color">
-                <span class="navbar-brand mb-0 h1 grid wide">Danh sách xe của đối tác: </span>
+                <span class="navbar-brand mb-0 h1 grid wide"><%="Danh sách xe của đối tác " + dt.getHoTen()%> </span>
             </nav>
 
             <div class="list-table grid wide">
@@ -98,7 +98,7 @@
                             <td><%=xe.getDongXe()%></td>
                             <td><%=xe.getDoiXe()%></td>
                             <td><%=xe.getMoTa()%></td>
-                            <td class="select-item" onclick="location.href = './gdNhaptt.html'"></a>Sửa</td>
+                            <td class="select-item" onclick=<%="\"location.href = './gdNhapThongTinXeHD205.jsp?xe_id=" + xe.getId()+"&dt_id="+dtID + "'\""%>></a>Sửa</td>
                             <td><%=ttHD%>
                             </td>
 
@@ -119,7 +119,7 @@
                             <td><%=xe.getDongXe()%></td>
                             <td><%=xe.getDoiXe()%></td>
                             <td><%=xe.getMoTa()%></td>
-                            <td class="select-item" onclick="location.href = './gdNhaptt.html'"></a>Chọn</td>
+                            <td class="select-item" onclick=<%="\"location.href = './gdNhapThongTinXeHD205.jsp?xe_id=" + xe.getId()+"&dt_id="+dtID + "'\""%>></a>Chọn</td>
                             <td>
                             </td>
 

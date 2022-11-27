@@ -4,6 +4,11 @@
     Author     : Admin
 --%>
 
+<%@page import="dao.XeHopDong205DAO"%>
+<%@page import="java.util.List"%>
+<%@page import="model.Xe205"%>
+<%@page import="java.time.LocalDate"%>
+<%@page import="model.XeHopDong205"%>
 <%@page import="model.QuanLy205"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -13,12 +18,44 @@
         if (ql == null) {
             response.sendRedirect("./gdQuanLy205.jsp");
         }
+
+        int xeId = 0;
+        try {
+            xeId = Integer.parseInt(request.getParameter("xe_id"));
+            if (xeId <= 0) {
+                response.sendRedirect("./gdQuanLy205.jsp");
+            }
+            XeHopDong205 xeHD = new XeHopDong205(0,
+                    LocalDate.parse(request.getParameter("ngay_bd")),
+                    LocalDate.parse(request.getParameter("ngay_kt")),
+                    Integer.parseInt(request.getParameter("don_gia")),
+                    request.getParameter("tinh_trang"),
+                    new Xe205(xeId, "", "", "", "", "", null));
+            boolean isOk = new XeHopDong205DAO().checkXeHD(xeHD);
+            if (isOk) {
+                List<XeHopDong205> dsXeHD = (List<XeHopDong205>) session.getAttribute("ds_xe_hd");
+
+                for (XeHopDong205 x : dsXeHD) {
+                    if (x.getXe().getId() == xeId) {
+                        dsXeHD.remove(x);
+                        break;
+                    }
+                }
+                dsXeHD.add(xeHD);
+            } else {
     %>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-    </head>
-    <body>
-        <h1>Hello World!</h1>
-    </body>
+    <script>
+        alert("Thêm thất bại");
+    </script>
+    <%
+                response.sendRedirect("./gdNhapThongTinXeHD205.jsp?xe_id=" + request.getParameter("xe_id") + "&dt_id=" + request.getParameter("dt_id"));
+            }
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        response.sendRedirect("./gdDanhSachXe205.jsp?" + "dt_id=" + request.getParameter("dt_id"));
+
+    %>
+
 </html>

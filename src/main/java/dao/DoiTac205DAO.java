@@ -56,14 +56,12 @@ public class DoiTac205DAO extends DAO {
     }
 
     public DoiTac205 getDoiTacByID(int id){
-         final String sql = "SELECT * from tblcanhan205 dt \n"
-               
+         final String sql = "SELECT * from tblcanhan205 \n"
                 + "WHERE id = ?";
         DoiTac205 dt = null;
         try {
             PreparedStatement prepareStatement = this.conn.prepareStatement(sql);
             prepareStatement.setInt(1, id);
-         
             ResultSet rs = prepareStatement.executeQuery();
             if (rs.next()) {
                  dt = new DoiTac205(rs.getInt("id"),
