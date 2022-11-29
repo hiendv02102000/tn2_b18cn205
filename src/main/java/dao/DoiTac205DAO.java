@@ -19,7 +19,7 @@ public class DoiTac205DAO extends DAO {
     public DoiTac205DAO() {
         super();
     }
-
+    
     public List<DoiTac205> getDSDoiTacTheoKieuXe(Xe205 xe) {
         final String sql = "SELECT * from tblcanhan205 dt \n"
                 + "INNER JOIN (\n"

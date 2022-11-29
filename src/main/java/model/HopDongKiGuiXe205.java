@@ -6,8 +6,8 @@ public class HopDongKiGuiXe205 extends HopDong205{
 	private QuanLy205 ql;
 	private DoiTac205 dt;
 
-    public HopDongKiGuiXe205(QuanLy205 ql, DoiTac205 dt, int id, String loai, List<XeHopDong205> dsXeHD, List<XeHopDong205> listXeHD) {
-        super(id, loai, dsXeHD, listXeHD);
+    public HopDongKiGuiXe205(QuanLy205 ql, DoiTac205 dt, int id,  List<XeHopDong205> dsXeHD) {
+        super(id, "kg", dsXeHD);
         this.ql = ql;
         this.dt = dt;
     }

@@ -46,15 +46,15 @@ public class HongDongKiGuiXe205DAO extends DAO {
             }
             String sqlXeHD = "INSERT INTO tblxehopdong205 (`donGia`, `ngayKetThuc`, `ngayBatDau`, `tinhTrang`, `tblXe205id`, `tblHopDong205id`) \n";
 
-            if (hd.getListXeHD().isEmpty()) {
+            if (hd.getDsXeHD().isEmpty()) {
                 return false;
             }
-            for (int i = 0; i < hd.getListXeHD().size(); i++) {
+            for (int i = 0; i < hd.getDsXeHD().size(); i++) {
                 sqlXeHD += "VALUES (?, ?, ?, ?, ?, ?)\n";
             }
             PreparedStatement prepareStatementXeHD = this.conn.prepareStatement(sqlXeHD);
-            for (int i = 0; i < hd.getListXeHD().size(); i++) {
-                XeHopDong205 xeHD = hd.getListXeHD().get(i);
+            for (int i = 0; i < hd.getDsXeHD().size(); i++) {
+                XeHopDong205 xeHD = hd.getDsXeHD().get(i);
                 prepareStatement.setDouble(1 + i * 5, xeHD.getDonGia());
                 prepareStatement.setDate(2 + i * 5, Date.valueOf(xeHD.getNgayKetThuc()));
                 prepareStatement.setDate(3 + i * 5, Date.valueOf(xeHD.getNgayKetThuc()));
@@ -62,7 +62,7 @@ public class HongDongKiGuiXe205DAO extends DAO {
                 prepareStatement.setInt(5 + i * 5, idHD);
             }
             rowCount = prepareStatementXeHD.executeUpdate();
-            if (rowCount < hd.getListXeHD().size()) {
+            if (rowCount < hd.getDsXeHD().size()) {
                 throw new Exception("Thêm Xe hợp đồng vào DB lỗi");
             }
             this.conn.setAutoCommit(true);
@@ -74,7 +74,7 @@ public class HongDongKiGuiXe205DAO extends DAO {
             } catch (SQLException ex) {
                 e.printStackTrace();
             }
-
+            System.err.println("?????????????");
             return false;
         }
         return true;

@@ -21,6 +21,7 @@ public class CaNhan205 {
         this.diaChi = diaChi;
         this.email = email;
         this.ghiChu = ghiChu;
+        if(this.ghiChu==null) this.ghiChu = "";
         this.loai = loai;
         this.sdt = sdt;
     }

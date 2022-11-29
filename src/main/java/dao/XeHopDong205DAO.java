@@ -29,12 +29,15 @@ public class XeHopDong205DAO extends DAO {
         }
         final String sql = "SELECT * FROM tblxehopdong205 \n"
                 + " WHERE tblXe205id = ? \n"
-                + " AND ngayKetThuc >= ?";
+                + " AND ((ngayKetThuc >= ? AND ngayBatDau <= ?)OR (ngayKetThuc >= ? AND ngayBatDau <= ?))";
         List<DoiTac205> listDT = new ArrayList<>();
         try {
             PreparedStatement prepareStatement = this.conn.prepareStatement(sql);
             prepareStatement.setInt(1, xeHD.getXe().getId());
             prepareStatement.setDate(2, Date.valueOf(xeHD.getNgayBatDau()));
+            prepareStatement.setDate(3, Date.valueOf(xeHD.getNgayBatDau()));
+            prepareStatement.setDate(4, Date.valueOf(xeHD.getNgayKetThuc()));
+            prepareStatement.setDate(5, Date.valueOf(xeHD.getNgayKetThuc()));
             ResultSet rs = prepareStatement.executeQuery();
             return !rs.next();
 

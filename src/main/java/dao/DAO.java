@@ -23,7 +23,7 @@ public class DAO {
             final String UserName = "root";
             final String Password = "123456";
             Class.forName("com.mysql.cj.jdbc.Driver");
-            String connectionURL = "jdbc:mysql://" + HostName + ":3307/" + DBName + "?zeroDateTimeBehavior=convertToNull";
+            String connectionURL = "jdbc:mysql://" + HostName + ":3306/" + DBName + "?zeroDateTimeBehavior=convertToNull";
             this.conn = DriverManager.getConnection(connectionURL, UserName, Password);
         } catch (ClassNotFoundException | SQLException e) {
             this.conn = null;

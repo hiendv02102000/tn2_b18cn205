@@ -1,13 +1,14 @@
 package model;
 
 public class Xe205 {
-	private int id;
-	private String bienSo;
-	private String dongXe;
-	private String hangXe;
-	private String doiXe;
-	private String moTa;
-	private DoiTac205 doiTac;
+
+    private int id;
+    private String bienSo;
+    private String dongXe;
+    private String hangXe;
+    private String doiXe;
+    private String moTa;
+    private DoiTac205 doiTac;
 
     public Xe205(int id, String bienSo, String dongXe, String hangXe, String doiXe, String moTa, DoiTac205 doiTac) {
         this.id = id;
@@ -16,6 +17,9 @@ public class Xe205 {
         this.hangXe = hangXe;
         this.doiXe = doiXe;
         this.moTa = moTa;
+        if (this.moTa == null) {
+            this.moTa = "";
+        }
         this.doiTac = doiTac;
     }
 
@@ -74,5 +78,5 @@ public class Xe205 {
     public void setDoiTac(DoiTac205 doiTac) {
         this.doiTac = doiTac;
     }
-        
+
 }

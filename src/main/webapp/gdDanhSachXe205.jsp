@@ -5,6 +5,8 @@
 --%>
 
 
+<%@page import="java.time.format.DateTimeFormatter"%>
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page import="model.DoiTac205"%>
 <%@page import="dao.DoiTac205DAO"%>
 <%@page import="java.util.*"%>
@@ -20,6 +22,7 @@
         QuanLy205 ql = (QuanLy205) session.getAttribute("quanLy");
         if (ql == null) {
             response.sendRedirect("./gdQuanLy205.jsp");
+            return;
         }
 
         int dtID = 0;
@@ -27,16 +30,20 @@
             dtID = Integer.parseInt(request.getParameter("dt_id"));
         } catch (Exception ex) {
             response.sendRedirect("./gdDanhSachDT205.jsp");
+            return;
         }
         if (dtID <= 0) {
             response.sendRedirect("./gdDanhSachDT205.jsp");
+            return;
         }
         DoiTac205DAO daoDT = new DoiTac205DAO();
         DoiTac205 dt = daoDT.getDoiTacByID(dtID);
+        session.setAttribute("dt_kg", dt);
         Xe205DAO daoXe = new Xe205DAO();
         List<Xe205> dsXe = (List<Xe205>) session.getAttribute("ds_xe");
         if (dsXe == null) {
             dsXe = daoXe.getDSXeCuaDoiTac(dtID);
+            session.setAttribute("ds_xe", dsXe);
         }
 
         List<XeHopDong205> dsXeHD = (List<XeHopDong205>) session.getAttribute("ds_xe_hd");
@@ -44,14 +51,11 @@
             dsXeHD = new ArrayList<XeHopDong205>();
             session.setAttribute("ds_xe_hd", dsXeHD);
         }
-        Map<Integer, String> m = new HashMap<>();
+        Map<Integer, XeHopDong205> m = new HashMap<>();
         for (XeHopDong205 xeHD : dsXeHD) {
             if (!m.containsKey(xeHD.getXe().getId())) {
-                String ttXe = "Đơn giá" + xeHD.getDonGia() + "\n"
-                        + "Tình Trạng:" + xeHD.getTinhTrang() + "\n"
-                        + "Ngày Bắt đầu :" + xeHD.getNgayBatDau() + "\n"
-                        + "Ngày Kết thúc:" + xeHD.getNgayKetThuc() + "\n";
-                m.put(xeHD.getXe().getId(), ttXe);
+
+                m.put(xeHD.getXe().getId(), xeHD);
             }
         }
     %>
@@ -86,11 +90,16 @@
                     </thead>
                     <tbody>
                         <%
+                            String pattern = "dd-MM-yyyy";
+                            DateTimeFormatter formatter = DateTimeFormatter.ofPattern(pattern);
                             for (Xe205 xe : dsXe) {
                                 if (!m.containsKey(xe.getId())) {
                                     continue;
                                 }
-                                String ttHD = m.get(xe.getId());
+                                XeHopDong205 xeHD = m.get(xe.getId());
+                                 
+                                String bd = formatter.format(xeHD.getNgayBatDau());
+                                String kt = formatter.format(xeHD.getNgayKetThuc());
                         %>
                         <tr>
                             <td><%=xe.getBienSo()%></td>
@@ -99,7 +108,11 @@
                             <td><%=xe.getDoiXe()%></td>
                             <td><%=xe.getMoTa()%></td>
                             <td class="select-item" onclick=<%="\"location.href = './gdNhapThongTinXeHD205.jsp?xe_id=" + xe.getId() + "&dt_id=" + dtID + "'\""%>></a>Sửa</td>
-                            <td><%=ttHD%>
+                            <td>
+                                <p>Đơn giá: <%=xeHD.getDonGia()%>VND</p>
+                                <p>Ngày bắt đầu:<%=bd%> </p>
+                                <p>Ngày kết thúc:<%=kt%> </p>
+                                <p>Tình trạng:<%=xeHD.getTinhTrang()%> </p>
                             </td>
 
                         </tr>
@@ -170,6 +183,9 @@
                                                 </tr>-->
                     </tbody>
                 </table>
+                <div class="fun-button grid wide">
+                    <button type="button" class="btn btn-success btn-fun" onclick="location.href = './gdXemTruocHopDong205.jsp'">Xác nhận</button>
+                </div>
             </div>
         </div>
 

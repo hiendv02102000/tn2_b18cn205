@@ -17,6 +17,7 @@
         QuanLy205 ql = (QuanLy205) session.getAttribute("quanLy");
         if (ql == null) {
             response.sendRedirect("./gdQuanLy205.jsp");
+            return;
         }
 
         int xeId = 0;
@@ -31,31 +32,50 @@
                     Integer.parseInt(request.getParameter("don_gia")),
                     request.getParameter("tinh_trang"),
                     new Xe205(xeId, "", "", "", "", "", null));
+            List<Xe205> dsXe = (List<Xe205>) session.getAttribute("ds_xe");
+
             boolean isOk = new XeHopDong205DAO().checkXeHD(xeHD);
+            if (dsXe == null) {
+                isOk = false;
+            } else {
+                for (Xe205 x : dsXe) {
+                    if (x.getId() == xeId) {
+                        xeHD.setXe(x);
+                        break;
+                    }
+                }
+            }
             if (isOk) {
                 List<XeHopDong205> dsXeHD = (List<XeHopDong205>) session.getAttribute("ds_xe_hd");
-
                 for (XeHopDong205 x : dsXeHD) {
                     if (x.getXe().getId() == xeId) {
                         dsXeHD.remove(x);
                         break;
                     }
                 }
+
                 dsXeHD.add(xeHD);
-            } else {
+                session.setAttribute("ds_xe_hd", dsXeHD);
+    %>
+    <script>
+        alert("Thêm Thành công");
+    </script>
+    <%
+    } else {
     %>
     <script>
         alert("Thêm thất bại");
     </script>
     <%
                 response.sendRedirect("./gdNhapThongTinXeHD205.jsp?xe_id=" + request.getParameter("xe_id") + "&dt_id=" + request.getParameter("dt_id"));
+                return;
             }
 
         } catch (Exception ex) {
             ex.printStackTrace();
+            
         }
-        response.sendRedirect("./gdDanhSachXe205.jsp?" + "dt_id=" + request.getParameter("dt_id"));
-
+response.sendRedirect("./gdDanhSachXe205.jsp?" + "dt_id=" + request.getParameter("dt_id"));
     %>
 
 </html>

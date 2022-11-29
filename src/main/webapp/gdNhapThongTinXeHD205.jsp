@@ -16,6 +16,7 @@
         QuanLy205 ql = (QuanLy205) session.getAttribute("quanLy");
         if (ql == null) {
             response.sendRedirect("./gdQuanLy205.jsp");
+            return;
         }
 
         int xeId = 0;
@@ -23,15 +24,18 @@
             xeId = Integer.parseInt(request.getParameter("xe_id"));
         } catch (Exception ex) {
             response.sendRedirect("./gdQuanLy205.jsp");
+            return;
         }
         if (xeId <= 0) {
             response.sendRedirect("./gdQuanLy205.jsp");
+            return;
         }
         Xe205DAO daoXe = new Xe205DAO();
         List<Xe205> dsXe = (List<Xe205>) session.getAttribute("ds_xe");
         List<XeHopDong205> dsXeHD = (List<XeHopDong205>) session.getAttribute("ds_xe_hd");
         if (dsXeHD == null || dsXe == null) {
             response.sendRedirect("./gdDanhSachXe205.jsp?" + "dt_id=" + request.getParameter("dt_id"));
+            return;
         }
         Xe205 xe = null;
         for (Xe205 x : dsXe) {
@@ -41,6 +45,7 @@
         }
         if (xe == null) {
             response.sendRedirect("./gdDanhSachXe205.jsp?" + "dt_id=" + request.getParameter("dt_id"));
+            return;
         }
         XeHopDong205 xeHD = new XeHopDong205(0, LocalDate.now(), LocalDate.now(), 0, "", xe);
         for (XeHopDong205 x : dsXeHD) {
