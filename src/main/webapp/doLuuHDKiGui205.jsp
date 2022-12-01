@@ -16,7 +16,7 @@
             return;
         }
         HopDongKiGuiXe205 hd = (HopDongKiGuiXe205) session.getAttribute("hd_kg_moi");
-        HongDongKiGuiXe205DAO dao = new HongDongKiGuiXe205DAO();
+        HopDongKiGuiXe205DAO dao = new HopDongKiGuiXe205DAO();
         boolean ok = dao.createHopDongKiGui(hd);
         if (ok) {
     %>

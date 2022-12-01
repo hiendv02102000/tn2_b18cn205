@@ -9,6 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -19,9 +20,9 @@ import model.*;
  *
  * @author Admin
  */
-public class HongDongKiGuiXe205DAO extends DAO {
+public class HopDongKiGuiXe205DAO extends DAO {
 
-    public HongDongKiGuiXe205DAO() {
+    public HopDongKiGuiXe205DAO() {
         super();
     }
 
@@ -44,22 +45,23 @@ public class HongDongKiGuiXe205DAO extends DAO {
             if (rs.next()) {
                 idHD = rs.getInt(1);
             }
-            String sqlXeHD = "INSERT INTO tblxehopdong205 (`donGia`, `ngayKetThuc`, `ngayBatDau`, `tinhTrang`, `tblXe205id`, `tblHopDong205id`) \n";
+            String sqlXeHD = "INSERT INTO tblxehopdong205 (`donGia`, `ngayKetThuc`, `ngayBatDau`, `tinhTrang`, `tblXe205id`, `tblHopDong205id`) VALUES\n";
 
             if (hd.getDsXeHD().isEmpty()) {
                 return false;
             }
             for (int i = 0; i < hd.getDsXeHD().size(); i++) {
-                sqlXeHD += "VALUES (?, ?, ?, ?, ?, ?)\n";
+                sqlXeHD += " (?, ?, ?, ?, ?, ?)\n";
             }
             PreparedStatement prepareStatementXeHD = this.conn.prepareStatement(sqlXeHD);
             for (int i = 0; i < hd.getDsXeHD().size(); i++) {
                 XeHopDong205 xeHD = hd.getDsXeHD().get(i);
-                prepareStatement.setDouble(1 + i * 5, xeHD.getDonGia());
-                prepareStatement.setDate(2 + i * 5, Date.valueOf(xeHD.getNgayKetThuc()));
-                prepareStatement.setDate(3 + i * 5, Date.valueOf(xeHD.getNgayKetThuc()));
-                prepareStatement.setInt(4 + i * 5, xeHD.getXe().getId());
-                prepareStatement.setInt(5 + i * 5, idHD);
+                prepareStatementXeHD.setDouble(1 + i * 6, xeHD.getDonGia());
+                prepareStatementXeHD.setDate(2 + i * 6, Date.valueOf(xeHD.getNgayKetThuc()));
+                prepareStatementXeHD.setDate(3 + i * 6, Date.valueOf(xeHD.getNgayBatDau()));
+                prepareStatementXeHD.setString(4 + i * 6, xeHD.getTinhTrang());
+                prepareStatementXeHD.setInt(5 + i * 6, xeHD.getXe().getId());
+                prepareStatementXeHD.setInt(6 + i * 6, idHD);
             }
             rowCount = prepareStatementXeHD.executeUpdate();
             if (rowCount < hd.getDsXeHD().size()) {
@@ -74,9 +76,17 @@ public class HongDongKiGuiXe205DAO extends DAO {
             } catch (SQLException ex) {
                 e.printStackTrace();
             }
-            System.err.println("?????????????");
             return false;
         }
         return true;
     }
+
+//    public static void main(String[] args) {
+//        HongDongKiGuiXe205DAO dao = new HongDongKiGuiXe205DAO();
+//        QuanLy205 ql = new QuanLy205("", "", 1, "", LocalDate.MIN, "", "", "", "", "");
+//        DoiTac205 dt = new DoiTac205(3, "", LocalDate.MIN, "", "", "", "", "");
+//        List<XeHopDong205> dsXeHD = new ArrayList<>();
+//        dsXeHD.add(new XeHopDong205(0, LocalDate.now(), LocalDate.now(), 0, "", new Xe205(1, "", "", "", "", "", dt)));
+//        dao.createHopDongKiGui(new HopDongKiGuiXe205(ql, dt, 0, dsXeHD));
+//    }
 }

@@ -34,7 +34,11 @@
                     new Xe205(xeId, "", "", "", "", "", null));
             List<Xe205> dsXe = (List<Xe205>) session.getAttribute("ds_xe");
 
-            boolean isOk = new XeHopDong205DAO().checkXeHD(xeHD);
+            String resCheck = new XeHopDong205DAO().checkXeHD(xeHD);
+            Boolean isOk = false;
+            if (resCheck.isEmpty()) {
+                isOk = true;
+            }
             if (dsXe == null) {
                 isOk = false;
             } else {
@@ -64,7 +68,7 @@
     } else {
     %>
     <script>
-        alert("Thêm thất bại");
+        alert(<%='"' + resCheck + '"'%>);
     </script>
     <%
                 response.sendRedirect("./gdNhapThongTinXeHD205.jsp?xe_id=" + request.getParameter("xe_id") + "&dt_id=" + request.getParameter("dt_id"));
@@ -73,9 +77,9 @@
 
         } catch (Exception ex) {
             ex.printStackTrace();
-            
+
         }
-response.sendRedirect("./gdDanhSachXe205.jsp?" + "dt_id=" + request.getParameter("dt_id"));
+        response.sendRedirect("./gdDanhSachXe205.jsp?" + "dt_id=" + request.getParameter("dt_id"));
     %>
 
 </html>
