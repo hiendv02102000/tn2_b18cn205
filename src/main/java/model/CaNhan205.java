@@ -26,6 +26,9 @@ public class CaNhan205 {
         this.sdt = sdt;
     }
 
+    public CaNhan205() {
+    }
+
     public String getSdt() {
         return sdt;
     }

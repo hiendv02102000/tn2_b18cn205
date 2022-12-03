@@ -18,7 +18,6 @@
             response.sendRedirect("./gdQuanLy205.jsp");
             return;
         }
-
         int xeId = 0;
         try {
             xeId = Integer.parseInt(request.getParameter("xe_id"));
@@ -77,10 +76,10 @@
                 <input type="text" id="tinh_trang" name="tinh_trang" value=<%="\"" + xeHD.getTinhTrang() + "\""%>><br><br>
 
                 <label for="dong_xe">Ngày bắt đầu:</label>
-                <input type="text" id="ngay_bd" name="ngay_bd" value=<%="\"" + xeHD.getNgayBatDau().toString() + "\""%>><br><br>
+                <input type="text" placeholder="dd-mm-yyyy" id="ngay_bd" name="ngay_bd" value=<%="\"" + xeHD.getNgayBatDau().toString() + "\""%>><br><br>
                 <label for="doi_xe">Ngày kết thúc</label>
                 <input type="text" id="ngay_kt" name="ngay_kt" value=<%="\"" + xeHD.getNgayKetThuc().toString() + "\""%>><br><br>
-                <input type="submit" value="Tìm kiếm">
+                <input type="submit" value="Thêm xe">
             </form>
         </div>
     </body>

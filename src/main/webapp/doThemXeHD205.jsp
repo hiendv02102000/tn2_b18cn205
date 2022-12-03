@@ -29,7 +29,7 @@
             XeHopDong205 xeHD = new XeHopDong205(0,
                     LocalDate.parse(request.getParameter("ngay_bd")),
                     LocalDate.parse(request.getParameter("ngay_kt")),
-                    Integer.parseInt(request.getParameter("don_gia")),
+                    Double.parseDouble(request.getParameter("don_gia")),
                     request.getParameter("tinh_trang"),
                     new Xe205(xeId, "", "", "", "", "", null));
             List<Xe205> dsXe = (List<Xe205>) session.getAttribute("ds_xe");
@@ -39,6 +39,7 @@
             if (resCheck.isEmpty()) {
                 isOk = true;
             }
+
             if (dsXe == null) {
                 isOk = false;
             } else {
@@ -57,29 +58,37 @@
                         break;
                     }
                 }
-
                 dsXeHD.add(xeHD);
                 session.setAttribute("ds_xe_hd", dsXeHD);
+                String url = "'" + "./gdDanhSachXe205.jsp?" + "dt_id=" + request.getParameter("dt_id") + "'";
     %>
     <script>
         alert("Thêm Thành công");
+        location.href = <%=url%>
     </script>
     <%
     } else {
+        String url = "'" + "./gdNhapThongTinXeHD205.jsp?xe_id=" + request.getParameter("xe_id") + "&dt_id=" + request.getParameter("dt_id") + "'";
     %>
     <script>
         alert(<%='"' + resCheck + '"'%>);
+        location.href = <%=url%>
     </script>
     <%
-                response.sendRedirect("./gdNhapThongTinXeHD205.jsp?xe_id=" + request.getParameter("xe_id") + "&dt_id=" + request.getParameter("dt_id"));
-                return;
-            }
-
-        } catch (Exception ex) {
-            ex.printStackTrace();
+            //response.sendRedirect();
 
         }
-        response.sendRedirect("./gdDanhSachXe205.jsp?" + "dt_id=" + request.getParameter("dt_id"));
+
+    } catch (Exception ex) {
+        ex.printStackTrace();
     %>
+    <script>
+
+        alert('Lỗi')
+    </script>
+    <%
+        }
+        // response.sendRedirect("./gdDanhSachXe205.jsp?" + "dt_id=" + request.getParameter("dt_id"));
+%>
 
 </html>

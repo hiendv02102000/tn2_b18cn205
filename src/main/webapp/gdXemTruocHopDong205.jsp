@@ -4,6 +4,7 @@
     Author     : Admin
 --%>
 
+<%@page import="java.time.LocalDate"%>
 <%@page import="java.time.format.DateTimeFormatter"%>
 <%@page import="java.time.Duration"%>
 <%@page import="java.text.SimpleDateFormat"%>
@@ -21,7 +22,7 @@
         }
         DoiTac205 dt = (DoiTac205) session.getAttribute("dt_kg");
         List<XeHopDong205> dsXeHD = (List<XeHopDong205>) session.getAttribute("ds_xe_hd");
-        HopDongKiGuiXe205 hd = new HopDongKiGuiXe205(ql, dt, 0, dsXeHD);
+        HopDongKiGuiXe205 hd = new HopDongKiGuiXe205(ql, dt, 0, dsXeHD,LocalDate.now(),"chua_ki");
         if (hd.getDsXeHD().size() == 0) {
             response.sendRedirect("./gdDanhSachXe205.jsp?" + "dt_id=" + dt.getId());
         }

@@ -4,6 +4,9 @@
  */
 package dao;
 
+import java.util.List;
+import model.DoiTac205;
+import model.Xe205;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -18,8 +21,25 @@ import static org.junit.Assert.*;
 public class DoiTac205DAOJUnitTest {
 
     DoiTac205DAO dao = new DoiTac205DAO();
-     @Test
-     public void hello() {
-     
-     }
+
+    @Test
+    public void hello() {
+        dao.getDSDoiTacTheoKieuXe(null);
+        dao.getDoiTacByID(0);
+    }
+
+    @Test
+    public void getDSDoiTacTheoKieuXe_testChuan1() {
+        String hangXe = "";
+        String dongXe = "";
+        String doiXe = "";
+        List<DoiTac205> dsDT = dao.getDSDoiTacTheoKieuXe(new Xe205(0, dongXe, hangXe, doiXe, "", "", null));
+        assertNotNull(dsDT);
+    }
+
+    @Test
+    public void getDSDoiTacTheoKieuXe_testNgoaile1() {
+        List<DoiTac205> dsDT = dao.getDSDoiTacTheoKieuXe(null);
+        assertNull(dsDT);
+    }
 }
