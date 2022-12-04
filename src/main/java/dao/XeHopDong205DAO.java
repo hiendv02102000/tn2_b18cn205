@@ -25,6 +25,7 @@ public class XeHopDong205DAO extends DAO {
     }
 
     public String checkXeHD(XeHopDong205 xeHD) {
+        if(xeHD == null ) return "Đối tượng chưa được khởi tạo";
         if (xeHD.getNgayBatDau().isBefore(LocalDate.now()) || xeHD.getNgayBatDau().isAfter(xeHD.getNgayKetThuc())) {
             return "Ngày bắt đầu và ngày kết thức đều phải từ ngày hôm nay";
         }

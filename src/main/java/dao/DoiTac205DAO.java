@@ -55,7 +55,7 @@ public class DoiTac205DAO extends DAO {
         return listDT;
     }
 
-    public DoiTac205 getDoiTacByID(int id){
+    public DoiTac205 getDoiTacTheoID(int id){
          final String sql = "SELECT * from tblcanhan205 \n"
                 + "WHERE id = ?";
         DoiTac205 dt = null;

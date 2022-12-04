@@ -37,7 +37,7 @@
             return;
         }
         DoiTac205DAO daoDT = new DoiTac205DAO();
-        DoiTac205 dt = daoDT.getDoiTacByID(dtID);
+        DoiTac205 dt = daoDT.getDoiTacTheoID(dtID);
         session.setAttribute("dt_kg", dt);
         Xe205DAO daoXe = new Xe205DAO();
         List<Xe205> dsXe = (List<Xe205>) session.getAttribute("ds_xe");
