@@ -33,7 +33,7 @@
             </nav>
 
             <div class="fun-button grid wide">
-                <button type="button" class="btn btn-success btn-fun" onclick="location.href = './gdDanhSachDT205.jsp'">Tạo hợp đồng
+                <button type="button" class="btn btn-success btn-fun" onclick="location.href = './gdTimKiemDT205.jsp'">Tạo hợp đồng
                     kí gửi</button>
             </div>
         </div>

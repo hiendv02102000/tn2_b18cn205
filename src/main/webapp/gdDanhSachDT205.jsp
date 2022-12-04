@@ -51,7 +51,7 @@
                 <span class="navbar-brand mb-0 h1 grid wide">Danh sách đối tác</span>
             </nav>
 
-            <form class="form-inline" method="GET" action="./gdDanhSachDT205.jsp"  >
+<!--            <form class="form-inline" method="GET" action="./gdDanhSachDT205.jsp"  >
                 <label   for="hang_xe">         Hãng xe:</label>
                 <input  type="text" id="hang_xe" name="hang_xe"><br><br>
                 <label  for="dong_xe">          Dòng xe:</label>
@@ -59,7 +59,7 @@
                 <label  for="doi_xe">           Đời xe:</label>
                 <input type="text" id="doi_xe" name="doi_xe"><br><br>
                 <button type="submit">Tìm Kiếm Đối tác</button>
-            </form>
+            </form>-->
 
             <div class="list-table grid wide">
                 <table class="table table-bordered ">
