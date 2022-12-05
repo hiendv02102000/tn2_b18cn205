@@ -24,10 +24,23 @@ public class DoiTac205DAOJUnitTest {
 
     @Test
     public void hello() {
-        dao.getDSDoiTacTheoKieuXe(null);
-        dao.getDoiTacByID(0);
+//        dao.getDSDoiTacTheoKieuXe(null);
+//        dao.getDoiTacTheoID(0);
     }
 
+    @Test
+    public void getDoiTacTheoID_testChuan1() {
+       
+        DoiTac205 dt = dao.getDoiTacTheoID(3);
+        assertNotNull(dt);
+        assertEquals(dt.getId(), 3);
+    }
+
+    @Test
+    public void getDoiTacTheoID_testNgoaile1() {
+         DoiTac205 dt = dao.getDoiTacTheoID(0);
+         assertNull(dt);
+    }
     @Test
     public void getDSDoiTacTheoKieuXe_testChuan1() {
         String hangXe = "";

@@ -14,6 +14,7 @@
 <!DOCTYPE html>
 <html>
     <%
+        
         QuanLy205 ql = (QuanLy205) session.getAttribute("quanLy");
         if (ql == null) {
             response.sendRedirect("./gdQuanLy205.jsp");
@@ -75,20 +76,19 @@
         location.href = <%=url%>
     </script>
     <%
-            //response.sendRedirect();
-
         }
 
     } catch (Exception ex) {
+        String url = "'" + "./gdNhapThongTinXeHD205.jsp?xe_id=" + request.getParameter("xe_id") + "&dt_id=" + request.getParameter("dt_id") + "'";
         ex.printStackTrace();
     %>
     <script>
 
-        alert('Lỗi')
+        alert(<%='"' +"Lỗi nhập" + '"'%>);
+        location.href = <%=url%>
     </script>
     <%
         }
         // response.sendRedirect("./gdDanhSachXe205.jsp?" + "dt_id=" + request.getParameter("dt_id"));
-%>
-
+    %>
 </html>

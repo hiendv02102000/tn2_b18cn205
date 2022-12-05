@@ -19,7 +19,7 @@ public class HopDong205 {
         this.trangThai = trangThai;
     }
 
-    public LocalDate getNgayKi() {
+    public LocalDate getNgayLap() {
         return ngayLap;
     }
 

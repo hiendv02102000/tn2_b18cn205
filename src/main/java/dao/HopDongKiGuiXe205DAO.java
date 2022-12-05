@@ -27,8 +27,8 @@ public class HopDongKiGuiXe205DAO extends DAO {
     }
 
     public boolean createHopDongKiGui(HopDongKiGuiXe205 hd) {
-        final String sqlHDKG = "INSERT INTO tblhopdong205 (`loai`, `tblThanhVien205id`, `tblCaNhan205id`) \n"
-                + "VALUES (?, ?, ?);";
+        final String sqlHDKG = "INSERT INTO tblhopdong205 (`loai`, `tblThanhVien205id`, `tblCaNhan205id`, `trangThai`, `ngayLap`) \n"
+                + "VALUES (?, ?, ?,?,?);";
 
         try {
             this.conn.setAutoCommit(false);
@@ -36,6 +36,8 @@ public class HopDongKiGuiXe205DAO extends DAO {
             prepareStatement.setString(1, "kg");
             prepareStatement.setInt(2, hd.getQl().getId());
             prepareStatement.setInt(3, hd.getDt().getId());
+            prepareStatement.setString(4, "chua_ki");
+            prepareStatement.setDate(5, Date.valueOf(LocalDate.now()));
             int rowCount = prepareStatement.executeUpdate();
             if (rowCount == 0) {
                 throw new Exception("Thêm hợp đồng vào DB lỗi");
