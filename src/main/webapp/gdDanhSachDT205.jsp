@@ -12,6 +12,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
     <%
+        response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("utf-8");
         QuanLy205 ql = (QuanLy205) session.getAttribute("quanLy");
         if (ql == null) {
             response.sendRedirect("./gdQuanLy205.jsp");
@@ -31,9 +33,18 @@
             doiXe = "";
         }
 
-        Xe205 xe = new Xe205(0, "", hangXe, dongXe, doiXe, "", null);
+        Xe205 xe = new Xe205(0, "", dongXe, hangXe, doiXe, "", null);
         List<DoiTac205> dsDT = dao.getDSDoiTacTheoKieuXe(xe);
-
+        String title = "Có xe phù hợp ";
+        if (!hangXe.isEmpty()) {
+            title += " hãng xe: " + hangXe;
+        }
+        if (!dongXe.isEmpty()) {
+            title += " dòng xe: " + dongXe;
+        }
+        if (!doiXe.isEmpty()) {
+            title += " đời xe: " + doiXe;
+        }
     %>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -48,18 +59,21 @@
 
         <div class="content">
             <nav class="navbar navbar-light navbar-color">
-                <span class="navbar-brand mb-0 h1 grid wide">Danh sách đối tác</span>
-            </nav>
+                <span class="navbar-brand mb-0 h1 grid wide">Danh sách đối tác<br></span >
 
-<!--            <form class="form-inline" method="GET" action="./gdDanhSachDT205.jsp"  >
-                <label   for="hang_xe">         Hãng xe:</label>
-                <input  type="text" id="hang_xe" name="hang_xe"><br><br>
-                <label  for="dong_xe">          Dòng xe:</label>
-                <input type="text" id="dong_xe" name="dong_xe"><br><br>
-                <label  for="doi_xe">           Đời xe:</label>
-                <input type="text" id="doi_xe" name="doi_xe"><br><br>
-                <button type="submit">Tìm Kiếm Đối tác</button>
-            </form>-->
+            </nav>
+            <nav class="navbar navbar-light navbar-color">
+                <p class="navbar-brand mb-0 h1 grid wide"><%=title%></p>
+            </nav>
+            <!--            <form class="form-inline" method="GET" action="./gdDanhSachDT205.jsp"  >
+                            <label   for="hang_xe">         Hãng xe:</label>
+                            <input  type="text" id="hang_xe" name="hang_xe"><br><br>
+                            <label  for="dong_xe">          Dòng xe:</label>
+                            <input type="text" id="dong_xe" name="dong_xe"><br><br>
+                            <label  for="doi_xe">           Đời xe:</label>
+                            <input type="text" id="doi_xe" name="doi_xe"><br><br>
+                            <button type="submit">Tìm Kiếm Đối tác</button>
+                        </form>-->
 
             <div class="list-table grid wide">
                 <table class="table table-bordered ">

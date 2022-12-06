@@ -58,7 +58,7 @@
                         long tong = 0;
                         for (XeHopDong205 xeHD : dsXeHD) {
                             i++;
-                            Duration diff = Duration.between(xeHD.getNgayKetThuc().atStartOfDay(), xeHD.getNgayBatDau().atStartOfDay());
+                            Duration diff = Duration.between(xeHD.getNgayBatDau().atStartOfDay(), xeHD.getNgayKetThuc().atStartOfDay());
                             tong += xeHD.getDonGia() * (diff.toDays()+1);
                     %>
                     <span class="hop-dong__text">

@@ -14,7 +14,8 @@
 <!DOCTYPE html>
 <html>
     <%
-        
+        response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("utf-8");
         QuanLy205 ql = (QuanLy205) session.getAttribute("quanLy");
         if (ql == null) {
             response.sendRedirect("./gdQuanLy205.jsp");
@@ -33,7 +34,7 @@
                     Long.parseLong(request.getParameter("don_gia")),
                     request.getParameter("tinh_trang"),
                     new Xe205(xeId, "", "", "", "", "", null));
-            List<Xe205> dsXe = (List<Xe205>) session.getAttribute("ds_xe");
+            List<Xe205> dsXe = (List<Xe205>) session.getAttribute("ds_xe"+request.getParameter("dt_id"));
 
             String resCheck = new XeHopDong205DAO().checkXeHD(xeHD);
             Boolean isOk = false;
@@ -84,11 +85,11 @@
     %>
     <script>
 
-        alert(<%='"' +"Lỗi nhập" + '"'%>);
+        alert(<%='"' + "Lỗi nhập" + '"'%>);
         location.href = <%=url%>
     </script>
     <%
         }
         // response.sendRedirect("./gdDanhSachXe205.jsp?" + "dt_id=" + request.getParameter("dt_id"));
-    %>
+%>
 </html>

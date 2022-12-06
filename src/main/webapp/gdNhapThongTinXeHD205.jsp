@@ -30,7 +30,7 @@
             return;
         }
         Xe205DAO daoXe = new Xe205DAO();
-        List<Xe205> dsXe = (List<Xe205>) session.getAttribute("ds_xe");
+        List<Xe205> dsXe = (List<Xe205>) session.getAttribute("ds_xe"+request.getParameter("dt_id"));
         List<XeHopDong205> dsXeHD = (List<XeHopDong205>) session.getAttribute("ds_xe_hd");
         if (dsXeHD == null || dsXe == null) {
             response.sendRedirect("./gdDanhSachXe205.jsp?" + "dt_id=" + request.getParameter("dt_id"));
@@ -76,9 +76,9 @@
                 <input type="text" id="tinh_trang" name="tinh_trang" value=<%="\"" + xeHD.getTinhTrang() + "\""%>><br><br>
 
                 <label for="dong_xe">Ngày bắt đầu:</label>
-                <input type="text" placeholder="dd-mm-yyyy" id="ngay_bd" name="ngay_bd" value=<%="\"" + xeHD.getNgayBatDau().toString() + "\""%>><br><br>
+                <input type="date" placeholder="dd-mm-yyyy" id="ngay_bd" name="ngay_bd" value=<%="\"" + xeHD.getNgayBatDau().toString() + "\""%>><br><br>
                 <label for="doi_xe">Ngày kết thúc</label>
-                <input type="text" id="ngay_kt" name="ngay_kt" value=<%="\"" + xeHD.getNgayKetThuc().toString() + "\""%>><br><br>
+                <input type="date" id="ngay_kt" name="ngay_kt" value=<%="\"" + xeHD.getNgayKetThuc().toString() + "\""%>><br><br>
                 <input type="submit" value="Thêm xe">
             </form>
         </div>

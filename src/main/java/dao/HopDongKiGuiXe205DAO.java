@@ -30,6 +30,8 @@ public class HopDongKiGuiXe205DAO extends DAO {
         final String sqlHDKG = "INSERT INTO tblhopdong205 (`loai`, `tblThanhVien205id`, `tblCaNhan205id`, `trangThai`, `ngayLap`) \n"
                 + "VALUES (?, ?, ?,?,?);";
         if (hd == null || hd.getDsXeHD() == null || hd.getDsXeHD().isEmpty()) {
+            
+            System.out.println("Lỗi 1");
             return false;
         }
         try {
@@ -52,6 +54,7 @@ public class HopDongKiGuiXe205DAO extends DAO {
             String sqlXeHD = "INSERT INTO tblxehopdong205 (`donGia`, `ngayKetThuc`, `ngayBatDau`, `tinhTrang`, `tblXe205id`, `tblHopDong205id`) VALUES\n";
 
             if (hd.getDsXeHD().isEmpty()) {
+                 System.out.println("Lỗi 2");
                 return false;
             }
             for (int i = 0; i < hd.getDsXeHD().size(); i++) {
@@ -79,7 +82,7 @@ public class HopDongKiGuiXe205DAO extends DAO {
                 this.conn.setAutoCommit(true);
             } catch (SQLException ex) {
             }
-            
+             System.out.println("Lỗi 3");
             return false;
         }
         return true;

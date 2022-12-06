@@ -81,4 +81,10 @@ public class DoiTac205DAO extends DAO {
         }
         return dt;
     }
+//    public static void main(String[] args) {
+//        DoiTac205DAO dao = new DoiTac205DAO();
+//        List<DoiTac205> ds = dao.getDSDoiTacTheoKieuXe(new Xe205(0, "", "", "Lamborghini", "", "", null));
+//        //System.out.println(ds.size());
+//        
+//    }
 }

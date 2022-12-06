@@ -40,10 +40,10 @@
         DoiTac205 dt = daoDT.getDoiTacTheoID(dtID);
         session.setAttribute("dt_kg", dt);
         Xe205DAO daoXe = new Xe205DAO();
-        List<Xe205> dsXe = (List<Xe205>) session.getAttribute("ds_xe");
+        List<Xe205> dsXe = (List<Xe205>) session.getAttribute("ds_xe"+dtID);
         if (dsXe == null) {
             dsXe = daoXe.getDSXeCuaDoiTac(dtID);
-            session.setAttribute("ds_xe", dsXe);
+            session.setAttribute("ds_xe"+dtID, dsXe);
         }
 
         List<XeHopDong205> dsXeHD = (List<XeHopDong205>) session.getAttribute("ds_xe_hd");

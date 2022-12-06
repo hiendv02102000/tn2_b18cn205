@@ -19,7 +19,10 @@
         HopDongKiGuiXe205DAO dao = new HopDongKiGuiXe205DAO();
         boolean ok = dao.createHopDongKiGui(hd);
         if (ok) {
+        session.invalidate();
+        
     %>
+    
     <script>
         alert("Tạo hợp đồng kí gửi thành côngThành công");
         location.href = './gdQuanLy205.jsp';
