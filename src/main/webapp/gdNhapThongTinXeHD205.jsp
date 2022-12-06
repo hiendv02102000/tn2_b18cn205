@@ -52,7 +52,7 @@
                 xeHD = x;
             }
         }
-        String urlThem = "\"./doThemXeHD205.jsp?xe_id="+xeId+ "&dt_id=" + request.getParameter("dt_id")+'"';
+        String urlThem = "\"./doThemXeHD205.jsp?xe_id=" + xeId + "&dt_id=" + request.getParameter("dt_id") + '"';
     %>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
