@@ -46,10 +46,10 @@
             session.setAttribute("ds_xe"+dtID, dsXe);
         }
 
-        List<XeHopDong205> dsXeHD = (List<XeHopDong205>) session.getAttribute("ds_xe_hd");
+        List<XeHopDong205> dsXeHD = (List<XeHopDong205>) session.getAttribute("ds_xe_hd"+dtID);
         if (dsXeHD == null) {
             dsXeHD = new ArrayList<XeHopDong205>();
-            session.setAttribute("ds_xe_hd", dsXeHD);
+            session.setAttribute("ds_xe_hd"+dtID, dsXeHD);
         }
         Map<Integer, XeHopDong205> m = new HashMap<>();
         for (XeHopDong205 xeHD : dsXeHD) {

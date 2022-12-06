@@ -31,7 +31,7 @@
         }
         Xe205DAO daoXe = new Xe205DAO();
         List<Xe205> dsXe = (List<Xe205>) session.getAttribute("ds_xe"+request.getParameter("dt_id"));
-        List<XeHopDong205> dsXeHD = (List<XeHopDong205>) session.getAttribute("ds_xe_hd");
+        List<XeHopDong205> dsXeHD = (List<XeHopDong205>) session.getAttribute("ds_xe_hd"+request.getParameter("dt_id"));
         if (dsXeHD == null || dsXe == null) {
             response.sendRedirect("./gdDanhSachXe205.jsp?" + "dt_id=" + request.getParameter("dt_id"));
             return;

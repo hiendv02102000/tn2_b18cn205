@@ -53,7 +53,7 @@
                 }
             }
             if (isOk) {
-                List<XeHopDong205> dsXeHD = (List<XeHopDong205>) session.getAttribute("ds_xe_hd");
+                List<XeHopDong205> dsXeHD = (List<XeHopDong205>) session.getAttribute("ds_xe_hd"+request.getParameter("dt_id"));
                 for (XeHopDong205 x : dsXeHD) {
                     if (x.getXe().getId() == xeId) {
                         dsXeHD.remove(x);
@@ -61,7 +61,7 @@
                     }
                 }
                 dsXeHD.add(xeHD);
-                session.setAttribute("ds_xe_hd", dsXeHD);
+                session.setAttribute("ds_xe_hd"+request.getParameter("dt_id"), dsXeHD);
                 String url = "'" + "./gdDanhSachXe205.jsp?" + "dt_id=" + request.getParameter("dt_id") + "'";
     %>
     <script>

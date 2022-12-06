@@ -51,25 +51,28 @@ public class HopDongKiGuiXe205DAO extends DAO {
             if (rs.next()) {
                 idHD = rs.getInt(1);
             }
-            String sqlXeHD = "INSERT INTO tblxehopdong205 (`donGia`, `ngayKetThuc`, `ngayBatDau`, `tinhTrang`, `tblXe205id`, `tblHopDong205id`) VALUES\n";
+            String sqlXeHD = "INSERT INTO tblxehopdong205 (`donGia`, `ngayKetThuc`, `ngayBatDau`, `tinhTrang`, `tblXe205id`, `tblHopDong205id`) \n"
+                    + "VALUES (?, ?, ?, ?, ?, ?)\n";
 
             if (hd.getDsXeHD().isEmpty()) {
                  System.out.println("Lỗi 2");
                 return false;
             }
-            for (int i = 0; i < hd.getDsXeHD().size(); i++) {
-                sqlXeHD += " (?, ?, ?, ?, ?, ?)\n";
+            for (int i = 1; i < hd.getDsXeHD().size(); i++) {
+                sqlXeHD += " ,(?, ?, ?, ?, ?, ?)\n";
             }
             PreparedStatement prepareStatementXeHD = this.conn.prepareStatement(sqlXeHD);
             for (int i = 0; i < hd.getDsXeHD().size(); i++) {
                 XeHopDong205 xeHD = hd.getDsXeHD().get(i);
-                prepareStatementXeHD.setDouble(1 + i * 6, xeHD.getDonGia());
+                prepareStatementXeHD.setLong(1 + i * 6, xeHD.getDonGia());
                 prepareStatementXeHD.setDate(2 + i * 6, Date.valueOf(xeHD.getNgayKetThuc()));
                 prepareStatementXeHD.setDate(3 + i * 6, Date.valueOf(xeHD.getNgayBatDau()));
                 prepareStatementXeHD.setString(4 + i * 6, xeHD.getTinhTrang());
                 prepareStatementXeHD.setInt(5 + i * 6, xeHD.getXe().getId());
                 prepareStatementXeHD.setInt(6 + i * 6, idHD);
             }
+            System.out.println( prepareStatementXeHD.toString());
+           
             rowCount = prepareStatementXeHD.executeUpdate();
             if (rowCount < hd.getDsXeHD().size()) {
                 throw new Exception("Thêm Xe hợp đồng vào DB lỗi");
@@ -77,10 +80,12 @@ public class HopDongKiGuiXe205DAO extends DAO {
             this.conn.setAutoCommit(true);
         }
         catch (Exception e) {
+            e.printStackTrace();
             try {
                 this.conn.rollback();
                 this.conn.setAutoCommit(true);
             } catch (SQLException ex) {
+                  ex.printStackTrace();
             }
              System.out.println("Lỗi 3");
             return false;
@@ -92,8 +97,9 @@ public class HopDongKiGuiXe205DAO extends DAO {
 //        HopDongKiGuiXe205DAO dao = new HopDongKiGuiXe205DAO();
 //        List<XeHopDong205> dsXeHD = new ArrayList<>();
 //        dsXeHD.add(new XeHopDong205(0, LocalDate.now().plusDays(100), LocalDate.now().plusDays(100), 1000000, "Tot", new Xe205(1, "", "", "", "", "", null)));
-//        QuanLy205 ql = new QuanLy205("", "", 0, "", null, "", "", "", "", "");
-//        DoiTac205 dt = new DoiTac205(0, "", null, "", "", "", "", "");
+//        dsXeHD.add(new XeHopDong205(0, LocalDate.now().plusDays(100), LocalDate.now().plusDays(100), 1000000, "Tot", new Xe205(2, "", "", "", "", "", null)));
+//        QuanLy205 ql = new QuanLy205("", "", 1, "", null, "", "", "", "", "");
+//        DoiTac205 dt = new DoiTac205(3, "", null, "", "", "", "", "");
 //        HopDongKiGuiXe205 hd = new HopDongKiGuiXe205(ql, dt, 0, dsXeHD, LocalDate.now(), "chua_ki");
 //        boolean ok = dao.createHopDongKiGui(hd);
 //    }
