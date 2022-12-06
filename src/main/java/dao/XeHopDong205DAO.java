@@ -26,8 +26,11 @@ public class XeHopDong205DAO extends DAO {
 
     public String checkXeHD(XeHopDong205 xeHD) {
         if(xeHD == null ) return "Đối tượng chưa được khởi tạo";
-        if (xeHD.getNgayBatDau().isBefore(LocalDate.now()) || xeHD.getNgayBatDau().isAfter(xeHD.getNgayKetThuc())) {
-            return "Ngày bắt đầu và ngày kết thức đều phải từ ngày hôm nay";
+        if (xeHD.getNgayBatDau().isBefore(LocalDate.now()) ) {
+            return "Ngày bắt đầu đều phải từ ngày hôm nay";
+        }
+        if(xeHD.getNgayBatDau().isAfter(xeHD.getNgayKetThuc())){
+             return "Ngày bắt đầu không thể sau ngày kết thúc";
         }
         if(xeHD.getDonGia()<=0){
             return "Đơn giá phải lớn hơn 0";
@@ -49,6 +52,13 @@ public class XeHopDong205DAO extends DAO {
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern(pattern);
                 String resMess = "Xe đã được kí gửi từ " + formatter.format(rs.getDate("ngayBatDau").toLocalDate()) + " đến " + formatter.format(rs.getDate("ngayKetThuc").toLocalDate());
                 return resMess;
+            }
+            final String sqlExists = "SELECT * FROM tn2.tblxe205 Where id = ?;";
+            prepareStatement = this.conn.prepareStatement(sqlExists);
+            prepareStatement.setInt(1, xeHD.getXe().getId());
+            rs = prepareStatement.executeQuery();
+            if(!rs.next()){
+                return "Xe không tồn tại";
             }
         } catch (Exception e) {
             e.printStackTrace();

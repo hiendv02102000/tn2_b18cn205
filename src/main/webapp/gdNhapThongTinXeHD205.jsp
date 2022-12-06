@@ -66,7 +66,7 @@
     <body>
         <div class="content">
             <nav class="navbar navbar-light navbar-color">
-                <span class="navbar-brand mb-0 h1 grid wide">Tìm kiếm đối tác</span>
+                <span class="navbar-brand mb-0 h1 grid wide"><%="Nhập thông tin của xe " + xe.getBienSo() + " trong hợp đồng"%></span>
             </nav>
             <form method="POST" action=<%=urlThem%>>
                 <label for="hang_xe">Đơn giá:</label>

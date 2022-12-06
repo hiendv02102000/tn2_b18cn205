@@ -21,6 +21,7 @@ public class DoiTac205DAO extends DAO {
     }
     
     public List<DoiTac205> getDSDoiTacTheoKieuXe(Xe205 xe) {
+        if(xe== null) return null;
         final String sql = "SELECT * from tblcanhan205 dt \n"
                 + "INNER JOIN (\n"
                 + "SELECT tblCaNhan205id as dt_id from tblxe205 \n"

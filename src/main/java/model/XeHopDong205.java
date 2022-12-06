@@ -8,11 +8,11 @@ public class XeHopDong205 {
 	private int id;
 	private LocalDate ngayBatDau;
 	private LocalDate ngayKetThuc;
-	private double donGia;
+	private long donGia;
 	private String tinhTrang;
 	private Xe205 xe;
 
-    public XeHopDong205(int id, LocalDate ngayBatDau, LocalDate ngayKetThuc, double donGia, String tinhTrang, Xe205 xe) {
+    public XeHopDong205(int id, LocalDate ngayBatDau, LocalDate ngayKetThuc, long donGia, String tinhTrang, Xe205 xe) {
         this.id = id;
         this.ngayBatDau = ngayBatDau;
         this.ngayKetThuc = ngayKetThuc;
@@ -45,11 +45,11 @@ public class XeHopDong205 {
         this.ngayKetThuc = ngayKetThuc;
     }
 
-    public double getDonGia() {
+    public long getDonGia() {
         return donGia;
     }
 
-    public void setDonGia(double donGia) {
+    public void setDonGia(long donGia) {
         this.donGia = donGia;
     }
 

@@ -30,7 +30,7 @@
             XeHopDong205 xeHD = new XeHopDong205(0,
                     LocalDate.parse(request.getParameter("ngay_bd")),
                     LocalDate.parse(request.getParameter("ngay_kt")),
-                    Double.parseDouble(request.getParameter("don_gia")),
+                    Long.parseLong(request.getParameter("don_gia")),
                     request.getParameter("tinh_trang"),
                     new Xe205(xeId, "", "", "", "", "", null));
             List<Xe205> dsXe = (List<Xe205>) session.getAttribute("ds_xe");

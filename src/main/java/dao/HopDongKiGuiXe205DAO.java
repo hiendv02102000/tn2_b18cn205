@@ -29,7 +29,9 @@ public class HopDongKiGuiXe205DAO extends DAO {
     public boolean createHopDongKiGui(HopDongKiGuiXe205 hd) {
         final String sqlHDKG = "INSERT INTO tblhopdong205 (`loai`, `tblThanhVien205id`, `tblCaNhan205id`, `trangThai`, `ngayLap`) \n"
                 + "VALUES (?, ?, ?,?,?);";
-
+        if (hd == null || hd.getDsXeHD() == null || hd.getDsXeHD().isEmpty()) {
+            return false;
+        }
         try {
             this.conn.setAutoCommit(false);
             PreparedStatement prepareStatement = this.conn.prepareStatement(sqlHDKG, Statement.RETURN_GENERATED_KEYS);
@@ -70,25 +72,26 @@ public class HopDongKiGuiXe205DAO extends DAO {
                 throw new Exception("Thêm Xe hợp đồng vào DB lỗi");
             }
             this.conn.setAutoCommit(true);
-        } catch (Exception e) {
-            e.printStackTrace();
+        }
+        catch (Exception e) {
             try {
                 this.conn.rollback();
                 this.conn.setAutoCommit(true);
             } catch (SQLException ex) {
-                e.printStackTrace();
             }
+            
             return false;
         }
         return true;
     }
 
 //    public static void main(String[] args) {
-//        HongDongKiGuiXe205DAO dao = new HongDongKiGuiXe205DAO();
-//        QuanLy205 ql = new QuanLy205("", "", 1, "", LocalDate.MIN, "", "", "", "", "");
-//        DoiTac205 dt = new DoiTac205(3, "", LocalDate.MIN, "", "", "", "", "");
+//        HopDongKiGuiXe205DAO dao = new HopDongKiGuiXe205DAO();
 //        List<XeHopDong205> dsXeHD = new ArrayList<>();
-//        dsXeHD.add(new XeHopDong205(0, LocalDate.now(), LocalDate.now(), 0, "", new Xe205(1, "", "", "", "", "", dt)));
-//        dao.createHopDongKiGui(new HopDongKiGuiXe205(ql, dt, 0, dsXeHD));
+//        dsXeHD.add(new XeHopDong205(0, LocalDate.now().plusDays(100), LocalDate.now().plusDays(100), 1000000, "Tot", new Xe205(1, "", "", "", "", "", null)));
+//        QuanLy205 ql = new QuanLy205("", "", 0, "", null, "", "", "", "", "");
+//        DoiTac205 dt = new DoiTac205(0, "", null, "", "", "", "", "");
+//        HopDongKiGuiXe205 hd = new HopDongKiGuiXe205(ql, dt, 0, dsXeHD, LocalDate.now(), "chua_ki");
+//        boolean ok = dao.createHopDongKiGui(hd);
 //    }
 }

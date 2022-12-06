@@ -23,14 +23,8 @@ public class DoiTac205DAOJUnitTest {
     DoiTac205DAO dao = new DoiTac205DAO();
 
     @Test
-    public void hello() {
-//        dao.getDSDoiTacTheoKieuXe(null);
-//        dao.getDoiTacTheoID(0);
-    }
-
-    @Test
     public void getDoiTacTheoID_testChuan1() {
-       
+        //Đối tác tồn tại
         DoiTac205 dt = dao.getDoiTacTheoID(3);
         assertNotNull(dt);
         assertEquals(dt.getId(), 3);
@@ -38,11 +32,14 @@ public class DoiTac205DAOJUnitTest {
 
     @Test
     public void getDoiTacTheoID_testNgoaile1() {
-         DoiTac205 dt = dao.getDoiTacTheoID(0);
-         assertNull(dt);
+        //Đối tác không tồn tại
+        DoiTac205 dt = dao.getDoiTacTheoID(0);
+        assertNull(dt);
     }
+
     @Test
     public void getDSDoiTacTheoKieuXe_testChuan1() {
+        // Xe khác null
         String hangXe = "";
         String dongXe = "";
         String doiXe = "";
@@ -52,6 +49,7 @@ public class DoiTac205DAOJUnitTest {
 
     @Test
     public void getDSDoiTacTheoKieuXe_testNgoaile1() {
+        //Xe là null
         List<DoiTac205> dsDT = dao.getDSDoiTacTheoKieuXe(null);
         assertNull(dsDT);
     }

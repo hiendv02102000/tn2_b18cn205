@@ -31,22 +31,24 @@
                 <span class="navbar-brand mb-0 h1 grid wide">Tìm kiếm đối tác</span>
             </nav>
             <form action="./gdDanhSachDT205.jsp">
-                <label for="hang_xe">Hãng xe:</label>
+                <label for="hang_xe" >Hãng xe:</label>
                 <input type="text" id="hang_xe" name="hang_xe"><br><br>
-                <label for="dong_xe">Dòng xe:</label>
+                <label for="dong_xe" >Dòng xe:</label>
                 <input type="text" id="dong_xe" name="dong_xe"><br><br>
-                <label for="doi_xe">Đời xe:</label>
+                <label for="doi_xe" >Đời xe:</label>
                 <input type="text" id="doi_xe" name="doi_xe"><br><br>
-                <input type="submit" value="Tìm kiếm">
+                <div class="fun-button grid wide">
+                    <button type="submit" class="btn btn-success btn-fun" >Tìm kiếm đối tác </button>
+                </div>
             </form>
         </div>
 
 
 
-        <div class="fun-button grid wide">
-            <button type="button" class="btn btn-success btn-fun" onclick="location.href = './gdDanhsachdoitac.html'">Tìm
-                kiếm</button>
-        </div>
+        <!--        <div class="fun-button grid wide">
+                    <button type="button" class="btn btn-success btn-fun" onclick="location.href = './gdDanhsachdoitac.html'">Tìm
+                        kiếm</button>
+                </div>-->
     </div>
 
 </body>

@@ -157,3 +157,8 @@ body{
     align-items: stretch;
   }
 }
+
+.can-giua {
+  margin: 0 auto !important;
+      text-align: center  !important;
+}

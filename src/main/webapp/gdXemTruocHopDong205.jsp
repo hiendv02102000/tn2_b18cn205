@@ -55,7 +55,7 @@
                         int i = 0;
                         String pattern = "dd-MM-yyyy";
                             DateTimeFormatter formatter = DateTimeFormatter.ofPattern(pattern);
-                        Double tong = 0.0;
+                        long tong = 0;
                         for (XeHopDong205 xeHD : dsXeHD) {
                             i++;
                             Duration diff = Duration.between(xeHD.getNgayKetThuc().atStartOfDay(), xeHD.getNgayBatDau().atStartOfDay());
